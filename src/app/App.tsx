@@ -7,6 +7,7 @@ import Main from "../components/Main";
 import Footer from "../components/Footer";
 import Questions from "../components/Questions";
 import Practice from "../components/Practice";
+import Settings from "../components/Settings";
 
 const styles = stylex.create({
   container: {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/practice" element={<Practice />} />
           <Route path="/questions" element={<Questions />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
       <Footer />

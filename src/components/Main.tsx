@@ -68,6 +68,10 @@ function Main() {
         navigate("/practice");
         break;
 
+      case "settings":
+        navigate("/settings");
+        break;
+
       case "manageQuestions":
         navigate("/questions");
     }
