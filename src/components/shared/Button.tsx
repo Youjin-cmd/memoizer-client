@@ -14,7 +14,7 @@ const styles = stylex.create({
 interface ButtonProps {
   id?: string;
   style?: StyleXArray<any>;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onClick?: (...args: any[]) => void;
 }
 

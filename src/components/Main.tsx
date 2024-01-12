@@ -1,6 +1,9 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../tokens.stylex";
+
+import useHeaderStore from "../store/header";
 
 import Button from "./shared/Button";
 
@@ -61,22 +64,31 @@ const styles = stylex.create({
 
 function Main() {
   const navigate = useNavigate();
+  const { setCurrentView } = useHeaderStore();
+
+  useEffect(() => {
+    setCurrentView("main");
+  }, []);
 
   function handleClickButton(type: string) {
     switch (type) {
       case "quickStart":
+        setCurrentView("practice");
         navigate("/practice");
         break;
 
       case "selectTopic":
+        setCurrentView("topics");
         navigate("/topics");
         break;
 
       case "manageQuestions":
+        setCurrentView("questions");
         navigate("/questions");
         break;
 
       case "settings":
+        setCurrentView("settings");
         navigate("/settings");
         break;
     }
