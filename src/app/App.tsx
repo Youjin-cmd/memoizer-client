@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
 import Questions from "../components/Questions";
+import Practice from "../components/Practice";
 
 const styles = stylex.create({
   container: {
@@ -31,6 +32,7 @@ function App() {
       <div {...stylex.props(styles.content)}>
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/practice" element={<Practice />} />
           <Route path="/questions" element={<Questions />} />
         </Routes>
       </div>
