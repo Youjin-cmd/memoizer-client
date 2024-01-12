@@ -5,6 +5,7 @@ import { colors } from "../../tokens.stylex";
 import Header from "../components/Header";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
+import Questions from "../components/Questions";
 
 const styles = stylex.create({
   container: {
@@ -12,13 +13,13 @@ const styles = stylex.create({
     flexDirection: "column",
     margin: "auto",
     maxWidth: "550px",
-    backgroundColor: colors.backgroundMint,
+    backgroundColor: colors.black,
   },
   content: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    width: "full",
+    width: "100%",
     height: "auto",
   },
 });
@@ -30,6 +31,7 @@ function App() {
       <div {...stylex.props(styles.content)}>
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/questions" element={<Questions />} />
         </Routes>
       </div>
       <Footer />

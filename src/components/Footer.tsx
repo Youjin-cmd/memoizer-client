@@ -6,7 +6,7 @@ const styles = stylex.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "full",
+    width: "100%",
     height: "50px",
     color: colors.mint,
     backgroundColor: colors.black,
