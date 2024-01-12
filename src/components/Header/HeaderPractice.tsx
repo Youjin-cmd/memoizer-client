@@ -2,13 +2,24 @@ import { useNavigate } from "react-router-dom";
 import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../../tokens.stylex";
 
+import usePracticeStore from "../../store/practice";
+
 import Button from "../shared/Button";
 
 function HeaderPractice() {
+  const { currentStatus, setCurrentStatus } = usePracticeStore();
   const navigate = useNavigate();
 
   function handleClickBack() {
     navigate("/");
+  }
+
+  function handleClickPause() {
+    if (currentStatus === "start") {
+      setCurrentStatus("pause");
+    } else {
+      setCurrentStatus("start");
+    }
   }
 
   return (
@@ -17,7 +28,9 @@ function HeaderPractice() {
         종료
       </Button>
       <span>연습</span>
-      <Button style={styles.buttonRight}>일시정지</Button>
+      <Button style={styles.buttonRight} onClick={handleClickPause}>
+        {currentStatus === "pause" ? "재개" : "일시정지"}
+      </Button>
     </div>
   );
 }

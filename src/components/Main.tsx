@@ -4,15 +4,18 @@ import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../tokens.stylex";
 
 import useHeaderStore from "../store/header";
+import usePracticeStore from "../store/practice";
 
 import Button from "./shared/Button";
 
 function Main() {
   const navigate = useNavigate();
+  const { setCurrentStatus } = usePracticeStore();
   const { setCurrentView } = useHeaderStore();
 
   useEffect(() => {
     setCurrentView("main");
+    setCurrentStatus("ready");
   }, []);
 
   function handleClickButton(type: string) {
