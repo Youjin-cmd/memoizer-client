@@ -1,35 +1,38 @@
+import { Routes, Route } from "react-router-dom";
 import * as stylex from "@stylexjs/stylex";
+import { colors } from "../../tokens.stylex";
 
-import Button from "../components/shared/Button";
+import Header from "../components/Header";
+import Main from "../components/Main";
+import Footer from "../components/Footer";
 
 const styles = stylex.create({
-  wrapper: {
+  container: {
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "column",
     margin: "auto",
-    maxWidth: "640px",
-    backgroundColor: {
-      default: "lightblue",
-    },
+    maxWidth: "550px",
+    backgroundColor: colors.backgroundMint,
   },
-  button: {
-    width: "50px",
-    height: "30px",
-    backgroundColor: {
-      default: "white",
-    },
-    borderStyle: "none",
-    borderRadius: "5px",
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "full",
+    height: "auto",
   },
 });
 
 function App() {
   return (
-    <div {...stylex.props(styles.wrapper)}>
-      Memoizer
-      <Button style={styles.button} onClick={() => {}}>
-        button
-      </Button>
+    <div {...stylex.props(styles.container)}>
+      <Header />
+      <div {...stylex.props(styles.content)}>
+        <Routes>
+          <Route path="/" element={<Main />} />
+        </Routes>
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -19,7 +19,6 @@ module.exports = {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "no-console": "warn",
-    "import/prefer-default-export": "warn",
     "@stylexjs/valid-styles": [
       "error",
       {
