@@ -68,12 +68,17 @@ function Main() {
         navigate("/practice");
         break;
 
-      case "settings":
-        navigate("/settings");
+      case "selectTopic":
+        navigate("/topics");
         break;
 
       case "manageQuestions":
         navigate("/questions");
+        break;
+
+      case "settings":
+        navigate("/settings");
+        break;
     }
   }
 
