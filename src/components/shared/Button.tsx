@@ -2,16 +2,25 @@
 import * as stylex from "@stylexjs/stylex";
 import { StyleXArray } from "@stylexjs/stylex/lib/StyleXTypes";
 
+const styles = stylex.create({
+  base: {
+    borderStyle: "none",
+    outline: "none",
+    backgroundColor: "inherit",
+    textDecoration: "none",
+  },
+});
+
 interface ButtonProps {
   id?: string;
   style?: StyleXArray<any>;
   children: React.ReactNode;
-  onClick: (...args: any[]) => void;
+  onClick?: (...args: any[]) => void;
 }
 
 function Button({ id, style, children, onClick }: ButtonProps) {
   return (
-    <button id={id} {...stylex.props(style)} onMouseDown={onClick}>
+    <button id={id} {...stylex.props(styles.base, style)} onMouseDown={onClick}>
       {children}
     </button>
   );
