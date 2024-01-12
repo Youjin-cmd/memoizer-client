@@ -8,17 +8,6 @@ import HeaderQuestions from "./HeaderQuestions";
 import HeaderTopics from "./HeaderTopics";
 import HeaderMain from "./HeaderMain";
 
-const styles = stylex.create({
-  wrapper: {
-    display: "flex",
-    width: "100%",
-    height: "70px",
-    color: colors.mint,
-    fontWeight: "bold",
-    userSelect: "none",
-  },
-});
-
 function Header() {
   const { currentView } = useHeaderStore();
   return (
@@ -31,5 +20,16 @@ function Header() {
     </div>
   );
 }
+
+const styles = stylex.create({
+  wrapper: {
+    display: "flex",
+    width: "100%",
+    height: "70px",
+    color: colors.mint,
+    fontWeight: "bold",
+    userSelect: "none",
+  },
+});
 
 export default Header;

@@ -2,6 +2,26 @@ import { useNavigate } from "react-router-dom";
 import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../../tokens.stylex";
 
+import Button from "../shared/Button";
+
+function HeaderSettings() {
+  const navigate = useNavigate();
+
+  function handleClickBack() {
+    navigate("/");
+  }
+
+  return (
+    <div {...stylex.props(styles.wrapper)}>
+      <Button style={styles.buttonLeft} onClick={handleClickBack}>
+        뒤로
+      </Button>
+      <span>설정</span>
+      <span {...stylex.props(styles.emptyRight)} />
+    </div>
+  );
+}
+
 const styles = stylex.create({
   wrapper: {
     display: "flex",
@@ -27,25 +47,5 @@ const styles = stylex.create({
     marginRight: "25px",
   },
 });
-
-import Button from "../shared/Button";
-
-function HeaderSettings() {
-  const navigate = useNavigate();
-
-  function handleClickBack() {
-    navigate("/");
-  }
-
-  return (
-    <div {...stylex.props(styles.wrapper)}>
-      <Button style={styles.buttonLeft} onClick={handleClickBack}>
-        뒤로
-      </Button>
-      <span>설정</span>
-      <span {...stylex.props(styles.emptyRight)} />
-    </div>
-  );
-}
 
 export default HeaderSettings;

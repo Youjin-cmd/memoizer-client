@@ -5,14 +5,26 @@ import { mockData } from "../constant/mockData";
 
 import Button from "./shared/Button";
 
+function Questions() {
+  return (
+    <div {...stylex.props(styles.wrapper)}>
+      {mockData.map(element => {
+        return (
+          <Button key={element.id} style={styles.questionButton}>
+            <span>{element.question}</span>
+          </Button>
+        );
+      })}
+    </div>
+  );
+}
+
 const styles = stylex.create({
   wrapper: {
-    minHeight: "100vh",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: 8,
-    userSelect: "none",
+    minHeight: `calc(100vh - 70px)`,
   },
   questionButton: {
     display: "flex",
@@ -36,19 +48,5 @@ const styles = stylex.create({
     overflow: "hidden",
   },
 });
-
-function Questions() {
-  return (
-    <div {...stylex.props(styles.wrapper)}>
-      {mockData.map(element => {
-        return (
-          <Button key={element.id} style={styles.questionButton}>
-            <span>{element.question}</span>
-          </Button>
-        );
-      })}
-    </div>
-  );
-}
 
 export default Questions;

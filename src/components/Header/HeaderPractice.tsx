@@ -4,6 +4,24 @@ import { colors } from "../../../tokens.stylex";
 
 import Button from "../shared/Button";
 
+function HeaderPractice() {
+  const navigate = useNavigate();
+
+  function handleClickBack() {
+    navigate("/");
+  }
+
+  return (
+    <div {...stylex.props(styles.wrapper)}>
+      <Button style={styles.buttonLeft} onClick={handleClickBack}>
+        종료
+      </Button>
+      <span>연습</span>
+      <Button style={styles.buttonRight}>일시정지</Button>
+    </div>
+  );
+}
+
 const styles = stylex.create({
   wrapper: {
     display: "flex",
@@ -37,23 +55,5 @@ const styles = stylex.create({
     textAlign: "right",
   },
 });
-
-function HeaderPractice() {
-  const navigate = useNavigate();
-
-  function handleClickBack() {
-    navigate("/");
-  }
-
-  return (
-    <div {...stylex.props(styles.wrapper)}>
-      <Button style={styles.buttonLeft} onClick={handleClickBack}>
-        종료
-      </Button>
-      <span>연습</span>
-      <Button style={styles.buttonRight}>일시정지</Button>
-    </div>
-  );
-}
 
 export default HeaderPractice;

@@ -4,6 +4,24 @@ import { colors } from "../../../tokens.stylex";
 
 import Button from "../shared/Button";
 
+function HeaderTopics() {
+  const navigate = useNavigate();
+
+  function handleClickBack() {
+    navigate("/");
+  }
+
+  return (
+    <div {...stylex.props(styles.wrapper)}>
+      <Button style={styles.buttonLeft} onClick={handleClickBack}>
+        뒤로
+      </Button>
+      <span>주제 선택</span>
+      <span {...stylex.props(styles.emptyRight)} />
+    </div>
+  );
+}
+
 const styles = stylex.create({
   wrapper: {
     display: "flex",
@@ -29,23 +47,5 @@ const styles = stylex.create({
     marginRight: "25px",
   },
 });
-
-function HeaderTopics() {
-  const navigate = useNavigate();
-
-  function handleClickBack() {
-    navigate("/");
-  }
-
-  return (
-    <div {...stylex.props(styles.wrapper)}>
-      <Button style={styles.buttonLeft} onClick={handleClickBack}>
-        뒤로
-      </Button>
-      <span>주제 선택</span>
-      <span {...stylex.props(styles.emptyRight)} />
-    </div>
-  );
-}
 
 export default HeaderTopics;

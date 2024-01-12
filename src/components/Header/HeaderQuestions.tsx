@@ -4,6 +4,24 @@ import { colors } from "../../../tokens.stylex";
 
 import Button from "../shared/Button";
 
+function HeaderQuestions() {
+  const navigate = useNavigate();
+
+  function handleClickBack() {
+    navigate("/");
+  }
+
+  return (
+    <div {...stylex.props(styles.wrapper)}>
+      <Button style={styles.buttonLeft} onClick={handleClickBack}>
+        뒤로
+      </Button>
+      <span>질문 관리</span>
+      <Button style={styles.buttonRight}>생성</Button>
+    </div>
+  );
+}
+
 const styles = stylex.create({
   wrapper: {
     display: "flex",
@@ -37,23 +55,5 @@ const styles = stylex.create({
     textAlign: "right",
   },
 });
-
-function HeaderQuestions() {
-  const navigate = useNavigate();
-
-  function handleClickBack() {
-    navigate("/");
-  }
-
-  return (
-    <div {...stylex.props(styles.wrapper)}>
-      <Button style={styles.buttonLeft} onClick={handleClickBack}>
-        뒤로
-      </Button>
-      <span>질문 관리</span>
-      <Button style={styles.buttonRight}>생성</Button>
-    </div>
-  );
-}
 
 export default HeaderQuestions;

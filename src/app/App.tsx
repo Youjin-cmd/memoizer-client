@@ -4,11 +4,27 @@ import { colors } from "../../tokens.stylex";
 
 import Header from "../components/Header/Header";
 import Main from "../components/Main";
-import Footer from "../components/Footer";
 import Questions from "../components/Questions";
 import Practice from "../components/Practice";
 import Settings from "../components/Settings";
 import Topics from "../components/Topics";
+
+function App() {
+  return (
+    <div {...stylex.props(styles.container)}>
+      <Header />
+      <div {...stylex.props(styles.content)}>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/practice" element={<Practice />} />
+          <Route path="/topics" element={<Topics />} />
+          <Route path="/questions" element={<Questions />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </div>
+    </div>
+  );
+}
 
 const styles = stylex.create({
   container: {
@@ -26,23 +42,5 @@ const styles = stylex.create({
     height: "auto",
   },
 });
-
-function App() {
-  return (
-    <div {...stylex.props(styles.container)}>
-      <Header />
-      <div {...stylex.props(styles.content)}>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/practice" element={<Practice />} />
-          <Route path="/topics" element={<Topics />} />
-          <Route path="/questions" element={<Questions />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
-      </div>
-      <Footer />
-    </div>
-  );
-}
 
 export default App;

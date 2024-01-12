@@ -1,5 +1,15 @@
 import * as stylex from "@stylexjs/stylex";
 
+function HeaderMain() {
+  return (
+    <div {...stylex.props(styles.wrapper)}>
+      <span {...stylex.props(styles.empty)} />
+      <span>Memoizer</span>
+      <span {...stylex.props(styles.empty)} />
+    </div>
+  );
+}
+
 const styles = stylex.create({
   wrapper: {
     display: "flex",
@@ -11,15 +21,5 @@ const styles = stylex.create({
     width: "90px",
   },
 });
-
-function HeaderMain() {
-  return (
-    <div {...stylex.props(styles.wrapper)}>
-      <span {...stylex.props(styles.empty)} />
-      <span>Memoizer</span>
-      <span {...stylex.props(styles.empty)} />
-    </div>
-  );
-}
 
 export default HeaderMain;

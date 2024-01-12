@@ -1,32 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../tokens.stylex";
 
-const styles = stylex.create({
-  wrapper: {
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: 8,
-    userSelect: "none",
-  },
-  settingContainer: {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    width: "50%",
-    height: "30px",
-    marginBottom: "20px",
-    padding: 16,
-    backgroundColor: colors.black,
-    color: colors.white,
-    fontSize: "1rem",
-  },
-  settingName: {
-    marginRight: "10px",
-  },
-});
-
 function Settings() {
   return (
     <div {...stylex.props(styles.wrapper)}>
@@ -57,5 +31,29 @@ function Settings() {
     </div>
   );
 }
+
+const styles = stylex.create({
+  wrapper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    minHeight: `calc(100vh - 70px)`,
+  },
+  settingContainer: {
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    width: "50%",
+    height: "30px",
+    marginBottom: "20px",
+    padding: 16,
+    backgroundColor: colors.black,
+    color: colors.white,
+    fontSize: "1rem",
+  },
+  settingName: {
+    marginRight: "10px",
+  },
+});
 
 export default Settings;

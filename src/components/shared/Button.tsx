@@ -2,15 +2,6 @@
 import * as stylex from "@stylexjs/stylex";
 import { StyleXArray } from "@stylexjs/stylex/lib/StyleXTypes";
 
-const styles = stylex.create({
-  base: {
-    borderStyle: "none",
-    outline: "none",
-    backgroundColor: "inherit",
-    textDecoration: "none",
-  },
-});
-
 interface ButtonProps {
   id?: string;
   style?: StyleXArray<any>;
@@ -25,5 +16,14 @@ function Button({ id, style, children, onClick }: ButtonProps) {
     </button>
   );
 }
+
+const styles = stylex.create({
+  base: {
+    borderStyle: "none",
+    outline: "none",
+    backgroundColor: "inherit",
+    textDecoration: "none",
+  },
+});
 
 export default Button;
