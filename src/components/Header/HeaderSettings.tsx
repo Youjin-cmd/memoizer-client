@@ -45,6 +45,7 @@ const styles = stylex.create({
     fontSize: "1.1rem",
     userSelect: "none",
     textAlign: "left",
+    cursor: "pointer",
   },
   emptyRight: {
     width: "80px",

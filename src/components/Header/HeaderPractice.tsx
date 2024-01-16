@@ -58,6 +58,7 @@ const styles = stylex.create({
     fontSize: "1.1rem",
     userSelect: "none",
     textAlign: "left",
+    cursor: "pointer",
   },
   buttonRight: {
     width: "80px",
@@ -70,6 +71,7 @@ const styles = stylex.create({
     fontSize: "1.1rem",
     userSelect: "none",
     textAlign: "right",
+    cursor: "pointer",
   },
 });
 

@@ -53,6 +53,7 @@ const styles = stylex.create({
   },
   settingName: {
     marginRight: "10px",
+    userSelect: "none",
   },
 });
 

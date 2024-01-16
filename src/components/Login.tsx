@@ -71,12 +71,14 @@ const styles = stylex.create({
     marginTop: 0,
     marginBottom: "50px",
     color: colors.mint,
+    userSelect: "none",
   },
   title: {
     marginTop: 0,
     marginBottom: "100px",
     color: colors.mint,
     fontSize: "2.5rem",
+    userSelect: "none",
   },
   button: {
     display: "flex",
