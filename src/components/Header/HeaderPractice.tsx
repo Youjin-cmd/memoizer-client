@@ -3,14 +3,18 @@ import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../../tokens.stylex";
 
 import usePracticeStore from "../../store/practice";
+import useHeaderStore from "../../store/header";
 
 import Button from "../shared/Button";
 
 function HeaderPractice() {
   const { currentStatus, setCurrentStatus } = usePracticeStore();
+  const { setCurrentView } = useHeaderStore();
   const navigate = useNavigate();
 
   function handleClickBack() {
+    setCurrentStatus("ready");
+    setCurrentView("main");
     navigate("/main");
   }
 

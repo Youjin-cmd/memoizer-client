@@ -5,6 +5,7 @@ import { colors } from "../../tokens.stylex";
 
 import fetchData from "../utils/fetchData";
 import useUserStore from "../store/user";
+import useHeaderStore from "../store/header";
 
 import Login from "../components/Login";
 import Header from "../components/Header/Header";
@@ -16,22 +17,21 @@ import Topics from "../components/Topics";
 
 function App() {
   const navigate = useNavigate();
-  const { setUser } = useUserStore();
+  const { user, setUser } = useUserStore();
+  const { setCurrentView } = useHeaderStore();
 
   async function checkAuthStatus() {
     try {
       const response = await fetchData("GET", "auth/check");
 
-      const { success, userInfo } = response.data;
+      const { userInfo } = response.data;
 
-      if (success) {
-        setUser(userInfo);
-        navigate("/main");
-      } else {
-        setUser({ username: "", userId: "" });
-      }
+      setUser({ username: userInfo.username, userId: userInfo.userId });
+      setCurrentView("main");
+      navigate("/main");
     } catch (error) {
-      console.error("Error checking auth" + error);
+      setUser({ username: "", userId: "" });
+      navigate("/");
     }
   }
 
@@ -45,11 +45,15 @@ function App() {
       <div {...stylex.props(styles.content)}>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/main" element={<Main />} />
-          <Route path="/practice" element={<Practice />} />
-          <Route path="/topics" element={<Topics />} />
-          <Route path="/questions" element={<Questions />} />
-          <Route path="/settings" element={<Settings />} />
+          {user.username && (
+            <>
+              <Route path="/main" element={<Main />} />
+              <Route path="/practice" element={<Practice />} />
+              <Route path="/topics" element={<Topics />} />
+              <Route path="/questions" element={<Questions />} />
+              <Route path="/settings" element={<Settings />} />
+            </>
+          )}
           <Route path="/" element={<Navigate replace to="/login" />} />
         </Routes>
       </div>

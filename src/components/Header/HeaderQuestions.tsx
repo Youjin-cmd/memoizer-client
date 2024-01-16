@@ -2,12 +2,16 @@ import { useNavigate } from "react-router-dom";
 import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../../tokens.stylex";
 
+import useHeaderStore from "../../store/header";
+
 import Button from "../shared/Button";
 
 function HeaderQuestions() {
   const navigate = useNavigate();
+  const { setCurrentView } = useHeaderStore();
 
   function handleClickBack() {
+    setCurrentView("main");
     navigate("/main");
   }
 
