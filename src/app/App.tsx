@@ -1,6 +1,10 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../tokens.stylex";
+
+import fetchData from "../utils/fetchData";
+import useUserStore from "../store/user";
 
 import Login from "../components/Login";
 import Header from "../components/Header/Header";
@@ -11,6 +15,30 @@ import Settings from "../components/Settings";
 import Topics from "../components/Topics";
 
 function App() {
+  const navigate = useNavigate();
+  const { setUser } = useUserStore();
+
+  async function checkAuthStatus() {
+    try {
+      const response = await fetchData("GET", "auth/check");
+
+      const { success, userInfo } = response.data;
+
+      if (success) {
+        setUser(userInfo);
+        navigate("/main");
+      } else {
+        setUser({ username: "", userId: "" });
+      }
+    } catch (error) {
+      console.error("Error checking auth" + error);
+    }
+  }
+
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
+
   return (
     <div {...stylex.props(styles.container)}>
       <Header />
