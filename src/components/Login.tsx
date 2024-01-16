@@ -1,15 +1,37 @@
 import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../tokens.stylex";
 
+import fetchData from "../utils/fetchData";
+import useUserStore from "../store/user";
+
 import Button from "./shared/Button";
 
 function Login() {
+  const { setUser } = useUserStore();
+
+  async function handleClickLogin() {
+    const userInfoObject = {
+      email: "test@gmail.com",
+      username: "test",
+    };
+
+    try {
+      const response = await fetchData("POST", "/auth/login", userInfoObject);
+
+      const { userInfo } = response.data;
+
+      setUser({ username: userInfo.username, userId: userInfo.userId });
+    } catch (error) {
+      console.error("Error with loging in" + error);
+    }
+  }
+
   return (
     <div {...stylex.props(styles.wrapper)}>
       <div {...stylex.props(styles.visualSection)}>
         <h2 {...stylex.props(styles.subtitle)}>나의 질문 파트너</h2>
         <h1 {...stylex.props(styles.title)}>Memoizer</h1>
-        <Button style={styles.button} onClick={() => {}}>
+        <Button style={styles.button} onClick={() => handleClickLogin()}>
           <div {...stylex.props(styles.logoContainer)}>
             <img
               width="18px"
