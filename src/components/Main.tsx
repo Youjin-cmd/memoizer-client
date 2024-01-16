@@ -100,7 +100,7 @@ const styles = stylex.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    height: "600px",
+    height: "500px",
     userSelect: "none",
   },
   phrase: {

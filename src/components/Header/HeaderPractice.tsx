@@ -11,7 +11,7 @@ function HeaderPractice() {
   const navigate = useNavigate();
 
   function handleClickBack() {
-    navigate("/");
+    navigate("/main");
   }
 
   function handleClickPause() {

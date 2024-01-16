@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 type View =
+  | "login"
   | "main"
   | "practice"
   | "result"
@@ -16,7 +17,7 @@ interface headerStore {
 }
 
 const useHeaderStore = create<headerStore>(set => ({
-  currentView: "main",
+  currentView: "login",
   setCurrentView: newView => set({ currentView: newView }),
 }));
 

@@ -8,7 +8,7 @@ function HeaderSettings() {
   const navigate = useNavigate();
 
   function handleClickBack() {
-    navigate("/");
+    navigate("/main");
   }
 
   return (

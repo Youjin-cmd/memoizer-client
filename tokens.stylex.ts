@@ -8,7 +8,7 @@ export const colors = stylex.defineVars({
   grey: "#E0E0E0",
   lightGrey: "#F8F9FA",
   white: "#FFFFFF",
-  lightBlue: "#F7F9FF",
+  lightBlue: "#679df5",
   black: "#000000",
   red: "#ed0909",
 });
