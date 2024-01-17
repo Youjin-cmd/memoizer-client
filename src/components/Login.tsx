@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../tokens.stylex";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { firebaseAuth } from "../firebaseAuth";
 
 import fetchData from "../utils/fetchData";
 import useUserStore from "../store/user";
@@ -9,17 +11,20 @@ import useHeaderStore from "../store/header";
 import Button from "./shared/Button";
 
 function Login() {
+  const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const { setUser } = useUserStore();
   const { setCurrentView } = useHeaderStore();
 
   async function handleClickLogin() {
-    const userInfoObject = {
-      email: "test@gmail.com",
-      username: "test",
-    };
-
     try {
+      const result = await signInWithPopup(firebaseAuth, googleProvider);
+
+      const userInfoObject = {
+        email: result.user.email,
+        username: result.user.displayName,
+      };
+
       const response = await fetchData("POST", "/auth/login", userInfoObject);
       const { userInfo } = response.data;
 
