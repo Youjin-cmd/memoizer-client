@@ -5,20 +5,20 @@ import useHeaderStore from "../../store/header";
 
 import Button from "../shared/Button";
 
-function BackButton() {
+function NewButton() {
   const navigate = useNavigate();
   const { setCurrentView } = useHeaderStore();
 
-  function handleClickBack() {
-    setCurrentView("main");
-    navigate("/main");
+  function handleClickCreate() {
+    setCurrentView("new");
+    navigate("/questions/new");
   }
 
   return (
-    <Button style={styles.buttonLeft} onClick={handleClickBack}>
-      뒤로
+    <Button style={styles.buttonRight} onClick={handleClickCreate}>
+      새 질문
     </Button>
   );
 }
 
-export default BackButton;
+export default NewButton;

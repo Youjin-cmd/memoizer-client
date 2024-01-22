@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import { styles } from ".";
 
-import * as stylex from "@stylexjs/stylex";
 import useHeaderStore from "../../store/header";
-import { colors } from "../../../tokens.stylex";
-
 import fetchData from "../../utils/fetchData";
 
 import Button from "../shared/Button";
@@ -33,26 +31,5 @@ function LogoutButton() {
     </Button>
   );
 }
-
-export const styles = stylex.create({
-  logout: {
-    width: "80px",
-    height: "30px",
-    marginRight: "25px",
-    borderStyle: "solid",
-    borderRadius: "5px",
-    borderWidth: "thin",
-    borderColor: colors.mint,
-    color: {
-      default: colors.mint,
-      ":hover": colors.white,
-    },
-    boxShadow: {
-      default: "none",
-      ":hover": "0px 5px 10px teal",
-    },
-    cursor: "pointer",
-  },
-});
 
 export default LogoutButton;

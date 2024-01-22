@@ -9,6 +9,7 @@ import useHeaderStore from "../../store/header";
 import Button from "../shared/Button";
 import BackButton from "./BackButton";
 import LogoutButton from "./LogoutButton";
+import NewButton from "./NewButton";
 
 function Header() {
   const navigate = useNavigate();
@@ -61,7 +62,14 @@ function Header() {
           <>
             <BackButton />
             <span>질문 관리</span>
-            <Button style={styles.buttonRight}>생성</Button>
+            <NewButton />
+          </>
+        )}
+        {currentView === "new" && (
+          <>
+            <BackButton />
+            <span>새 질문</span>
+            <span {...stylex.props(styles.emptyRight)} />
           </>
         )}
         {currentView === "settings" && (
@@ -125,6 +133,24 @@ export const styles = stylex.create({
   emptyRight: {
     width: "80px",
     marginRight: "25px",
+  },
+  logout: {
+    width: "80px",
+    height: "30px",
+    marginRight: "25px",
+    borderStyle: "solid",
+    borderRadius: "5px",
+    borderWidth: "thin",
+    borderColor: colors.mint,
+    color: {
+      default: colors.mint,
+      ":hover": colors.white,
+    },
+    boxShadow: {
+      default: "none",
+      ":hover": "0px 5px 10px teal",
+    },
+    cursor: "pointer",
   },
 });
 

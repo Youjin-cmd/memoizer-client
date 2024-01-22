@@ -2,6 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 
 export const colors = stylex.defineVars({
   mint: "#7ED7C1",
+  hoverMint: "#172e28",
   backgroundMint: "#dff7f1",
   blue: "#4285F4",
   darkGrey: "#757575",
