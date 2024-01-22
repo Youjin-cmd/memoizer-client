@@ -8,7 +8,7 @@ import useUserStore from "../store/user";
 import useHeaderStore from "../store/header";
 
 import Login from "../components/Login";
-import Header from "../components/Header/Header";
+import Header from "../components/Header";
 import Main from "../components/Main";
 import Questions from "../components/Questions";
 import Practice from "../components/Practice";

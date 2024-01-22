@@ -6,7 +6,7 @@ import useHeaderStore from "../../store/header";
 
 import Button from "../shared/Button";
 
-function HeaderSettings() {
+function BackButton() {
   const navigate = useNavigate();
   const { setCurrentView } = useHeaderStore();
 
@@ -16,24 +16,13 @@ function HeaderSettings() {
   }
 
   return (
-    <div {...stylex.props(styles.wrapper)}>
-      <Button style={styles.buttonLeft} onClick={handleClickBack}>
-        뒤로
-      </Button>
-      <span>설정</span>
-      <span {...stylex.props(styles.emptyRight)} />
-    </div>
+    <Button style={styles.buttonLeft} onClick={handleClickBack}>
+      뒤로
+    </Button>
   );
 }
 
-const styles = stylex.create({
-  wrapper: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    fontSize: "1.1rem",
-  },
+export const styles = stylex.create({
   buttonLeft: {
     width: "80px",
     height: "auto",
@@ -47,10 +36,6 @@ const styles = stylex.create({
     textAlign: "left",
     cursor: "pointer",
   },
-  emptyRight: {
-    width: "80px",
-    marginRight: "25px",
-  },
 });
 
-export default HeaderSettings;
+export default BackButton;

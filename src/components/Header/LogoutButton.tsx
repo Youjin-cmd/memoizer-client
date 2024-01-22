@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
+
 import * as stylex from "@stylexjs/stylex";
+import useHeaderStore from "../../store/header";
 import { colors } from "../../../tokens.stylex";
 
 import fetchData from "../../utils/fetchData";
-import useHeaderStore from "../../store/header";
 
 import Button from "../shared/Button";
 
-function HeaderMain() {
+function LogoutButton() {
   const navigate = useNavigate();
   const { setCurrentView } = useHeaderStore();
 
@@ -27,27 +28,14 @@ function HeaderMain() {
   }
 
   return (
-    <div {...stylex.props(styles.wrapper)}>
-      <span {...stylex.props(styles.empty)} />
-      <span>Memoizer</span>
-      <Button style={styles.buttonRight} onClick={handleClickLogout}>
-        로그아웃
-      </Button>
-    </div>
+    <Button style={styles.logout} onClick={handleClickLogout}>
+      로그아웃
+    </Button>
   );
 }
 
-const styles = stylex.create({
-  wrapper: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-  },
-  empty: {
-    width: "90px",
-  },
-  buttonRight: {
+export const styles = stylex.create({
+  logout: {
     width: "80px",
     height: "30px",
     marginRight: "25px",
@@ -67,4 +55,4 @@ const styles = stylex.create({
   },
 });
 
-export default HeaderMain;
+export default LogoutButton;
