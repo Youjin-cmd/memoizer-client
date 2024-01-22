@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import * as stylex from "@stylexjs/stylex";
-import { colors } from "../../tokens.stylex";
+import { colors } from "../../../tokens.stylex";
 
-import { mockData } from "../constant/mockData";
+import { mockData } from "../../constant/mockData";
 
-import Button from "./shared/Button";
-import usePracticeStore from "../store/practice";
+import Button from "../shared/Button";
+import usePracticeStore from "../../store/practice";
+import TimerBar from "./TimerBar";
+import Question from "./Question";
 
 function Practice() {
   const timerBarRef = useRef<HTMLDivElement>(null);
@@ -49,10 +51,11 @@ function Practice() {
 
   return (
     <div {...stylex.props(styles.wrapper)}>
-      <div {...stylex.props(styles.questionContainer)}>
-        {timeRemaining ? mockData[pageNum].question : "시간 종료"}
-      </div>
-      <div ref={timerBarRef} {...stylex.props(styles.timerBar)} />
+      <Question
+        timeRemaining={timeRemaining}
+        question={mockData[pageNum].question}
+      />
+      <TimerBar timerBarRef={timerBarRef} />
       <div {...stylex.props(styles.buttonsContainer)}>
         <Button
           style={styles.button}
@@ -79,21 +82,6 @@ const styles = stylex.create({
     justifyContent: "space-between",
     alignItems: "center",
     minHeight: `calc(100vh - 70px)`,
-  },
-  questionContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: "600px",
-    color: colors.white,
-    userSelect: "none",
-  },
-  timerBar: {
-    width: "300px",
-    height: "2px",
-    backgroundColor: colors.mint,
-    transition: "1s",
   },
   buttonsContainer: {
     display: "flex",
