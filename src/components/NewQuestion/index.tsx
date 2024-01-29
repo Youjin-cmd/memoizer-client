@@ -1,8 +1,37 @@
+import { useNavigate } from "react-router-dom";
 import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../../tokens.stylex";
+
+import fetchData from "../../utils/fetchData";
+import useUserStore from "../../store/user";
+
 import Button from "../shared/Button";
 
 function NewQuestion() {
+  const navigate = useNavigate();
+  const { user } = useUserStore();
+  async function handleClickCreate() {
+    try {
+      const newQuestion = {
+        question: "질문이름2",
+        answer: "답변2",
+        topic: "일반",
+      };
+
+      const response = await fetchData(
+        "POST",
+        `users/${user.userId}/question`,
+        newQuestion,
+      );
+
+      if (response.data.success) {
+        navigate("/questions");
+      }
+    } catch (error) {
+      console.error("Error occured with loging in" + error);
+    }
+  }
+
   return (
     <div {...stylex.props(styles.wrapper)}>
       <div {...stylex.props(styles.form)}>
@@ -23,7 +52,9 @@ function NewQuestion() {
         </div>
       </div>
       <div {...stylex.props(styles.buttonSection)}>
-        <Button style={styles.button}>생성</Button>
+        <Button style={styles.button} onClick={handleClickCreate}>
+          생성
+        </Button>
       </div>
     </div>
   );
