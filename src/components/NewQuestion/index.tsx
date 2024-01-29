@@ -4,11 +4,13 @@ import { colors } from "../../../tokens.stylex";
 
 import fetchData from "../../utils/fetchData";
 import useUserStore from "../../store/user";
+import useHeaderStore from "../../store/header";
 
 import Button from "../shared/Button";
 
 function NewQuestion() {
   const navigate = useNavigate();
+  const { setCurrentView } = useHeaderStore();
   const { user } = useUserStore();
   async function handleClickCreate() {
     try {
@@ -26,6 +28,7 @@ function NewQuestion() {
 
       if (response.data.success) {
         navigate("/questions");
+        setCurrentView("questions");
       }
     } catch (error) {
       console.error("Error occured with loging in" + error);
