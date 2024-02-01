@@ -15,6 +15,7 @@ import Practice from "../components/Practice";
 import Settings from "../components/Settings";
 import Topics from "../components/Topics";
 import NewQuestion from "../components/NewQuestion";
+import Question from "../components/Question";
 
 function App() {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ function App() {
               <Route path="/practice" element={<Practice />} />
               <Route path="/topics" element={<Topics />} />
               <Route path="/questions" element={<Questions />} />
+              <Route path="/questions/:id" element={<Question />} />
               <Route path="/questions/new" element={<NewQuestion />} />
               <Route path="/settings" element={<Settings />} />
             </>

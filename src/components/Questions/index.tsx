@@ -6,6 +6,7 @@ import fetchData from "../../utils/fetchData";
 import useUserStore from "../../store/user";
 
 import Button from "../shared/Button";
+import { useNavigate } from "react-router-dom";
 
 interface Question {
   _id: string;
@@ -16,6 +17,7 @@ interface Question {
 
 function Questions() {
   const { user } = useUserStore();
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState<Question[]>();
 
   async function getAllQuestions() {
@@ -34,11 +36,31 @@ function Questions() {
     getAllQuestions();
   }, []);
 
+  function handleClickQuestion(
+    id: string,
+    question: string,
+    answer: string,
+    topic: string,
+  ) {
+    navigate(`/questions/${id}`, { state: { question, answer, topic } });
+  }
+
   return (
     <div {...stylex.props(styles.wrapper)}>
       {questions?.map(question => {
         return (
-          <Button key={question._id} style={styles.questionButton}>
+          <Button
+            key={question._id}
+            style={styles.questionButton}
+            onClick={() =>
+              handleClickQuestion(
+                question._id,
+                question.question,
+                question.answer,
+                question.topic,
+              )
+            }
+          >
             <span>{question.question}</span>
           </Button>
         );
