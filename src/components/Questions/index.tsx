@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as stylex from "@stylexjs/stylex";
 import { colors } from "../../../tokens.stylex";
 
 import fetchData from "../../utils/fetchData";
 import useUserStore from "../../store/user";
+import useHeaderStore from "../../store/header";
 
 import Button from "../shared/Button";
-import { useNavigate } from "react-router-dom";
 
 interface Question {
   _id: string;
@@ -18,6 +19,7 @@ interface Question {
 function Questions() {
   const { user } = useUserStore();
   const navigate = useNavigate();
+  const { setCurrentView } = useHeaderStore();
   const [questions, setQuestions] = useState<Question[]>();
 
   async function getAllQuestions() {
@@ -43,6 +45,7 @@ function Questions() {
     topic: string,
   ) {
     navigate(`/questions/${id}`, { state: { question, answer, topic } });
+    setCurrentView("question");
   }
 
   return (

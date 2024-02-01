@@ -53,28 +53,35 @@ function Header() {
         )}
         {currentView === "topics" && (
           <>
-            <BackButton />
+            <BackButton view="main" route="/main" />
             <span>주제 선택</span>
             <span {...stylex.props(styles.emptyRight)} />
           </>
         )}
         {currentView === "questions" && (
           <>
-            <BackButton />
+            <BackButton view="main" route="/main" />
             <span>질문 관리</span>
+            <NewButton />
+          </>
+        )}
+        {currentView === "question" && (
+          <>
+            <BackButton view="questions" route="/questions" />
+            <span>질문 상세</span>
             <NewButton />
           </>
         )}
         {currentView === "new" && (
           <>
-            <BackButton />
+            <BackButton view="questions" route="/questions" />
             <span>새 질문</span>
             <span {...stylex.props(styles.emptyRight)} />
           </>
         )}
         {currentView === "settings" && (
           <>
-            <BackButton />
+            <BackButton view="main" route="/main" />
             <span>설정</span>
             <span {...stylex.props(styles.emptyRight)} />
           </>

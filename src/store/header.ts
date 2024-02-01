@@ -1,19 +1,9 @@
 import { create } from "zustand";
-
-type View =
-  | "login"
-  | "main"
-  | "practice"
-  | "result"
-  | "topics"
-  | "questions"
-  | "new"
-  | "edit"
-  | "settings";
+import { IView } from "../types/type";
 
 interface headerStore {
-  currentView: View;
-  setCurrentView: (newView: View) => void;
+  currentView: IView;
+  setCurrentView: (newView: IView) => void;
 }
 
 const useHeaderStore = create<headerStore>(set => ({

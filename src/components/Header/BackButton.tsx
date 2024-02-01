@@ -3,15 +3,21 @@ import { styles } from ".";
 
 import useHeaderStore from "../../store/header";
 
+import { IView } from "../../types/type";
 import Button from "../shared/Button";
 
-function BackButton() {
+interface BackButtonProps {
+  view: IView;
+  route: string;
+}
+
+function BackButton({ view, route }: BackButtonProps) {
   const navigate = useNavigate();
   const { setCurrentView } = useHeaderStore();
 
   function handleClickBack() {
-    setCurrentView("main");
-    navigate("/main");
+    setCurrentView(view);
+    navigate(route);
   }
 
   return (
